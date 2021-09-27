@@ -18,7 +18,7 @@ export const ItemCount = ( {Precio, stateCount, setStateCount} ) => {
     }
     const HandleReset = () => 
     {
-        setStateCount ((initialValue) => initialValue = 0)
+        setStateCount ((initialValue) => initialValue = 1)
         setPrice (Precio)
     }
     const onAdd = () =>
