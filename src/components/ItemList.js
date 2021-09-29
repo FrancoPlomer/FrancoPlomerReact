@@ -75,7 +75,12 @@ export const CardList = ({id, name, tipo ,source}) => {
                         </CardContent>
                     </CardActionArea>
                     <CardActions className="product_Button">
-                        <Button variant="contained" color="secondary" id="buyButton"><Link to={`/ItemDetailContainer/${id}`} id="linkDetail">Ver detalle</Link></Button>
+                        <Button 
+                        variant="contained" color="secondary" id="buyButton">
+                            <Link to={`/ItemDetailContainer/${id}`} id="linkDetail">
+                                Ver detalle
+                            </Link>
+                        </Button>
                     </CardActions>
 
         </Card>

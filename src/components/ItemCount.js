@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
+import { useCart } from '../Context/CartContext';
 
-export const ItemCount = ( {Precio, stateCount, setStateCount} ) => {
+export const ItemCount = ( {Precio, stateCount, setStateCount, name, source, id} ) => {
     const [Price, setPrice] = useState(Precio)
     const [Ref, setRef] = useState(true)
+    const {AddItem, setBasePrice, BasePrice} = useCart();
+    setBasePrice(Precio)
     const HandleIncrement = () => 
     {
         setStateCount ((initialValue) => initialValue + 1)
@@ -24,7 +27,9 @@ export const ItemCount = ( {Precio, stateCount, setStateCount} ) => {
     const onAdd = () =>
     {
         setRef (!Ref)
+        AddItem(name, stateCount, Price, source, id, BasePrice)
     }
+
     return (
         <>
         {(Ref) ?                  
@@ -61,7 +66,9 @@ export const ItemCount = ( {Precio, stateCount, setStateCount} ) => {
                 💲{`${Price}`},00ARS
             </strong>
             <div className="ContainerCount_Reset">
-                <Button variant="contained" color="secondary" id="buyButton"><Link to = "/Cart" className="itemMenu">Comprar</Link></Button>
+                <Button variant="contained" color="secondary" id="buyButton">
+                    <Link to = "/Cart" className="itemMenu">Comprar</Link>
+                </Button>
             </div>
         </div>
         }

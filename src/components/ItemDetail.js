@@ -10,6 +10,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import { ItemCount } from './ItemCount';
+import { useCart } from '../Context/CartContext';
 
 const useStyles = makeStyles({
     media: {
@@ -23,7 +24,8 @@ export const ItemDetailContainer = () => {
     const classes = useStyles();
     const {id} = useParams();
     const {Items} = PromiseHookId (id);
-
+    const {setBasePrice} = useCart();
+    setBasePrice(Items[0]?.precio);
     return (
         <>
         {
@@ -47,7 +49,8 @@ export const ItemDetailContainer = () => {
                                 </CardContent>
                             </CardActionArea>
                             <CardActions>
-                                <ItemCount Precio={item.precio} stateCount={Count} setStateCount={setCount}/>
+                                <ItemCount id={id} Precio={item.precio} stateCount={Count} 
+                                setStateCount={setCount} name={item.nombre} source={item.source}/>
                             </CardActions>                            
                         </div>
                         <div className="cardFatherDetail__Description">
