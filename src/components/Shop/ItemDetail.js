@@ -1,6 +1,6 @@
 import React from 'react'
 import { useParams } from 'react-router'
-import { PromiseHookId } from '../Hooks/PromiseHook';
+import { PromiseHookId } from '../../Hooks/PromiseHook';
 import { useState } from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -9,8 +9,8 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
-import { ItemCount } from './ItemCount';
-import { useCart } from '../Context/CartContext';
+import { ItemCount } from '../../Helpers/ItemCount';
+import { useCart } from '../../Context/CartContext';
 
 const useStyles = makeStyles({
     media: {

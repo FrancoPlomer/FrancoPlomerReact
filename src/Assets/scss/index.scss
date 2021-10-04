@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
 *
 {
   padding: 0;
@@ -6,6 +7,42 @@
 body
 {
   background-color: #c4c4c4;
+}
+.cartItem{
+  display: flex;
+  width: 5rem;
+  justify-content: space-between;
+}
+#cartItem_Length{
+  border-radius: 100%;
+  background-color: #677fcc;
+  width: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#tittleNavbar
+{
+  font-family: 'Indie Flower', cursive;
+  text-shadow: 1px 1px #000;
+  padding:5px 0;
+  transition: all 1s;
+}
+#tittleNavbar:hover
+{
+  border-bottom: 3px solid #1036d0;
+  border-top: 3px solid #1036d0;
+  padding: 0;
+}
+#CarrouselHeader
+{
+  height: 42rem;
+  overflow: hidden;
+}
+#CarrouselHeader img{
+  height:45rem;
+  width: 100%;
+  object-fit: cover;
 }
 #icon{
   text-decoration:none;
@@ -50,7 +87,33 @@ h2{
   border-radius: 10%;
   border-right: 2px solid #000;
   border-bottom: 2px solid #000;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.cardFatherImg{
+  height: 370px;
+  width: 370px;
+  transition: all 0.5s;
+}
+.cardFatherImg:hover{
+  filter: blur(2px);
+}
+#textCardImg{
+  display: none;
+  width: 100%;
+  position: absolute;
+  margin-top: -15rem;
+  background-color: rgba(255, 255, 255, 0.816);
+  color:#000;
+  text-align: center;
+}
+.linkImgSrc:hover  .cardFatherImg{
+  filter: blur(2px);
+}
 
+.linkImgSrc:hover  #textCardImg{
+  display: block;
 }
 .cardFatherDetail
 {
@@ -58,6 +121,7 @@ h2{
   background-color: #060606;
   background: -webkit-linear-gradient(top left, #929292, #c5c5c5);
   display: flex;
+  margin-top: 5rem;
   .cardFatherDetail__Container
   {
     width: 70%;
@@ -104,8 +168,9 @@ h2{
 {
   display: flex;
   justify-content: space-between;
-  background-color: rgb(175, 153, 175);
-  border-bottom:3px solid #5e4158;
+  background-color: rgb(153, 172, 175);
+  border-bottom:3px solid #1036d0;
+  height: 5rem;
 }
 .containerNavBar_LogAndCart
 {
@@ -120,7 +185,7 @@ h2{
 .ContainerCount_HEAD
 {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; 
   width: 100%;
 }
 #ContainerCount_HEAD--countValue
@@ -172,4 +237,34 @@ h2{
   object-fit: cover;
   height: 10rem;
   width: 10rem;
+}
+
+#logoNavBar{
+  margin: 1rem auto;
+  height: 4.5rem;
+  width: 5rem;
+}
+
+#textTittleLogo
+{
+  z-index: -1;
+  margin-top: -1.3rem;
+  margin-left: -.5rem;
+}
+
+#quantityProducts{
+  margin-top: 5rem;
+}
+
+#TotalPrice{
+  display: flex;
+  justify-content:space-between ;
+}
+.bodyButton{
+  display: flex;
+  width: 40%;
+  justify-content: space-between;
+}
+#cartIcon{
+  color:#fff;
 }
