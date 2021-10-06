@@ -16,7 +16,7 @@ export const ItemCount = ( {Precio, stateCount, setStateCount, name, source, id}
     const HandleDecrement = () => 
     {
         setStateCount ((initialValue) => 
-        (initialValue > 0 ) ? (initialValue - 1) : 0)
+        (initialValue > 1 ) ? (initialValue - 1) : 1)
         setPrice( (stateCount - 1 > 0) ? Precio * (stateCount - 1) : Precio )
     }
     const HandleReset = () => 
