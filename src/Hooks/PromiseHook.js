@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { getFirestore } from '../Firebase';
 export const PromiseHookCategory = (categoria) => {
     const [Loading, setLoading] = useState(false);    
     const [Items, setItems] = useState([])
@@ -8,29 +9,35 @@ export const PromiseHookCategory = (categoria) => {
     }, [categoria, Loading])
     const getProducts = async() => 
     {
-        let url = `http://localhost:3001/Products`;
-        if (categoria !== "")
-        {
-            url = `http://localhost:3001/Products?tipo=${categoria}`;
+        const db = getFirestore();
+        if (categoria === ""){
+            const productsCollection = db.collection("products");
+            productsCollection
+                .get()
+                .then((querySnapshot) => {
+                    if(querySnapshot.empty){
+                        console.log("No hay productos")
+                    } else {
+                        setItems(querySnapshot.docs.map((doc) => ( {id:doc.id,...doc.data() })));
+                    }
+                })
+                .catch((err) => {throw err})
+                .finally(() => setLoading(true))            
         }
-        await fetch (url)
-            .then((response) => 
-            {
-                try{
-                    return response.json()
-                } catch (err)
-                {
-                    throw err;
+        else{
+            const productsCollection = db.collection("products").where("tipo", "==", categoria);
+            productsCollection
+            .get()
+            .then((querySnapshot) => {
+                if(querySnapshot.empty){
+                    console.log("No hay productos")
+                } else {
+                    setItems(querySnapshot.docs.map((doc) => ( {id:doc.id,...doc.data() })));
                 }
             })
-            .then((data) => {
-                setItems(data)
-            })
-            .catch((err) => 
-            {
-                throw err;
-            })
-            .finally(() => setLoading(true))
+            .catch((err) => {throw err})
+            .finally(() => setLoading(true))    
+        }
     }
     return({Items, Loading})
 }
@@ -38,31 +45,26 @@ export const PromiseHookCategory = (categoria) => {
 export const PromiseHookId = (id) => {
     const [Loading, setLoading] = useState(false);    
     const [Items, setItems] = useState([])
+
+    const db = getFirestore();
     useEffect(() => {
         getProducts()
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [id, Loading])
     const getProducts = async() => 
     {
-        const url = `http://localhost:3001/Products?id=${id}`
-        await fetch (url)
-            .then((response) => 
-            {
-                try{
-                    return response.json()
-                } catch (err)
-                {
-                    throw err;
-                }
-            })
-            .then((data) => {
-                setItems(data)
-            })
-            .catch((err) => 
-            {
-                throw err;
-            })
-            .finally(() => setLoading(true))
+        const productsCollection = db.collection("products").where("id", "==", id);
+        productsCollection
+        .get()
+        .then((querySnapshot) => {
+            if(querySnapshot.empty){
+                console.log("No hay productos")
+            } else {
+                setItems(querySnapshot.docs.map((doc) => ( {id:doc.id,...doc.data() })));
+            }
+        })
+        .catch((err) => {throw err})
+        .finally(() => setLoading(true))  
     }
     return({Items, Loading})
 }

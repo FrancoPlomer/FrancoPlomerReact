@@ -19,6 +19,7 @@ export default function Products() {
     useEffect(() => {
     }, [Tipo])
     const {Items, Loading} = PromiseHookCategory(Tipo)
+    console.log(Items)
     return (
     <>
         <Carrousel />
@@ -52,7 +53,7 @@ export default function Products() {
                         (product) =>
                         
                         {
-                            return <CardList key={product.id} id={product.id} name={product.nombre} source={product.source} tipo={product.tipo}/>
+                            return <CardList key={product.id} id={product.id} name={product.nombre}/>
                         }
                         )
                     : <Load />

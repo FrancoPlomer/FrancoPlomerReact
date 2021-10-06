@@ -35,7 +35,7 @@ export const ItemDetailContainer = () => {
                             <CardActionArea>
                             <CardMedia
                                     className={classes.media}
-                                    image={item.source}
+                                    image={require(`../../Assets/Multimedia/${item.nombre}.jpg`)?.default}
                                     title={item.nombre} />
                                 <CardContent>
                                     <Typography gutterBottom variant="h5" component="h2">

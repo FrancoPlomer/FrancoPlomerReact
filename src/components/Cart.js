@@ -42,7 +42,7 @@ export const Cart = () => {
                 <div>
                     <div key={Product.Item} className="productCart">
                         <div className="productCart__Img">
-                            <img src={Product.source} alt={Product.Item} className="productCart__Img-src"/>
+                            <img src={require(`../Assets/Multimedia/${Product.Item}.jpg`)?.default} alt={Product.Item} className="productCart__Img-src"/>
                         </div>
                         <div>
                             <p>Nombre del producto: {Product.Item}</p>
