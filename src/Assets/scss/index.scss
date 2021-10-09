@@ -21,13 +21,7 @@ body
   align-items: center;
   justify-content: center;
 }
-#tittleNavbar
-{
-  font-family: 'Indie Flower', cursive;
-  text-shadow: 1px 1px #000;
-  padding:5px 0;
-  transition: all 1s;
-}
+
 #tittleNavbar:hover
 {
   border-bottom: 3px solid #1036d0;
@@ -171,6 +165,23 @@ h2{
   background-color: rgb(153, 172, 175);
   border-bottom:3px solid #1036d0;
   height: 5rem;
+  #logoNavBar{
+    margin: 1rem auto;
+    height: 4.5rem;
+    width: 5rem;
+  }
+  .ContainerNavBar{
+    display: flex;
+    #tittleNavbar
+    {
+      font-family: 'Indie Flower', cursive;
+      text-shadow: 1px 1px #000;
+      transition: all 1s;
+    }
+  }
+  .MenuBarLogged{
+    display: flex;
+  }
 }
 .containerNavBar_LogAndCart
 {
@@ -239,11 +250,7 @@ h2{
   width: 10rem;
 }
 
-#logoNavBar{
-  margin: 1rem auto;
-  height: 4.5rem;
-  width: 5rem;
-}
+
 
 #textTittleLogo
 {
@@ -267,4 +274,7 @@ h2{
 }
 #cartIcon{
   color:#fff;
+}
+.ModalLogIn{
+  margin-top: 10rem;
 }

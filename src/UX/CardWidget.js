@@ -1,6 +1,6 @@
 import React from 'react'
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-import { useCart } from '../../Context/CartContext';
+import { useCart } from '../Context/CartContext';
 import { Link } from 'react-router-dom';
 
 export const CardWidget = () => {

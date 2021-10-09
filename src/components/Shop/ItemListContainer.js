@@ -19,7 +19,6 @@ export default function Products() {
     useEffect(() => {
     }, [Tipo])
     const {Items, Loading} = PromiseHookCategory(Tipo)
-    console.log(Items)
     return (
     <>
         <Carrousel />
