@@ -4,13 +4,13 @@ import Toolbar from '@material-ui/core/Toolbar';
 import { CardWidget } from '../../UX/CardWidget';
 import { Link } from 'react-router-dom';
 import imgLogo from "../../Assets/Multimedia/logoNavbar.png";
-import "firebase/compat/auth"
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+// import "firebase/compat/auth"
+// import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import SimpleModal from '../../UX/Modal';
 
 
 export default function MenuAppBar() {
-    const auth = getAuth();
+    // const auth = getAuth();
     return (
     <div>
         <AppBar position="fixed">
