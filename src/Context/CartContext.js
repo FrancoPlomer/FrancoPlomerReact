@@ -1,5 +1,4 @@
 import { createContext, memo, useContext, useState } from "react";
-import firebase from "firebase/compat/app"
 import "firebase/compat/firestore"
 
 
@@ -18,20 +17,6 @@ export const CartProvider = memo(({ children }) =>
         }
     })
 
-    const [Buy, setBuy] = useState(
-        {
-            buyer:{name: "", 
-                phone: 0, 
-                email: "",
-            },
-            items:[{
-                id:0,
-                tittle:"",
-                price:0,
-            }], 
-            date: "",
-            total: 0,
-        })
     const [BasePrice, setBasePrice] = useState(0)
 
 
@@ -41,7 +26,6 @@ export const CartProvider = memo(({ children }) =>
             Item, 
             quantity,
             price,
-            source,
             precioBase,
         }
         const referencia = Cart.find((product) => product.id === NewItem.id);
@@ -64,18 +48,6 @@ export const CartProvider = memo(({ children }) =>
             setLogged(true)
         }
     }
-
-    const AddBuy = (Cart, Price) => {
-        setBuy({
-        buyer:Buyer,
-        items:Cart,
-        date: firebase.firestore.Timestamp.fromDate(new Date()),
-        total: Price,
-        })
-        setLogged(false)
-        return Buy;
-    }
-
 
     const removeItem = (id) => 
     {
@@ -104,7 +76,7 @@ export const CartProvider = memo(({ children }) =>
         setCart(newCart)
     }
 
-    return <CartContext.Provider value={{Cart, AddItem, removeItem, AddBuyer, AddBuy,  clear, isInCart, setBasePrice, BasePrice, Logged, Buy}}>{ children }</CartContext.Provider>
+    return <CartContext.Provider value={{Cart, AddItem, removeItem, AddBuyer,  clear, isInCart, setBasePrice, BasePrice, Logged, Buyer}}>{ children }</CartContext.Provider>
 });
 
 export const useCart = () => 

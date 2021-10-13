@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { getFirestore } from '../Firebase';
+
 export const PromiseHookCategory = (categoria) => {
     const [Loading, setLoading] = useState(false);    
     const [Items, setItems] = useState([])
@@ -67,4 +68,22 @@ export const PromiseHookId = (id) => {
         .finally(() => setLoading(true))  
     }
     return({Items, Loading})
+}
+
+export const PromiseHookOrder = (name, phone, email, Cart) => {
+    const db = getFirestore();
+    console.log(name, phone, email, Cart)
+    const ordersCollection = db.collection("orders");
+    ordersCollection
+        .add({
+            buyer: {
+                name, 
+                phone,
+                email,
+            },
+            items: Cart,
+            total: 2000
+        })
+        .then((docRef) => console.log(docRef.id))
+        .catch((err) => {throw err})
 }

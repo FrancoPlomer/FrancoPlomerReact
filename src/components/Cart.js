@@ -3,15 +3,13 @@ import { useCart } from '../Context/CartContext'
 import Button from '@material-ui/core/Button';
 import swal from 'sweetalert';
 import "firebase/compat/firestore"
-import { getFirestore } from '../Firebase';
+import { PromiseHookOrder } from '../Hooks/PromiseHook';
 
 export const Cart = () => {
-    const {Cart, clear, removeItem, isInCart, AddBuy, Logged, Buy} = useCart()
+    const {Cart, clear, removeItem, isInCart, Logged, Buyer} = useCart()
     const [Price, setPrice] = useState(0)
     const [Ref, setRef] = useState(false)   
     const [hiddeButton, setHiddeButton] = useState(false)
-
-
     let total = 0;
     const handleClear = () => {
         clear();
@@ -39,38 +37,35 @@ export const Cart = () => {
     }
 
     
-    const handleFinish = () => {
-        const total = handleTotalCalculate();
+    const handleFinish = (e) => {
+        e.preventDefault();
+        const finishtotal = handleTotalCalculate();
         swal({
             title: "Estas seguro que deseas terminar tu compra?",
             text: "Una vez terminada se cargara segun tu informacion de cliente",
             icon: "warning",
             buttons: true,
             dangerMode: true,
-          })
-          .then((willFinish) => {
+        })
+        .then(async (willFinish) => {
             if (willFinish) {
-              if(Logged){
-                  setHiddeButton(true);
-                  AddBuy( Cart , total );
-                  const db = getFirestore();
-                  const ordersCollection = db.collection("orders");
-                  ordersCollection
-                      .add(Buy)
-                      .then ((docRef) => console.log("Se agrego con exito a la colecion", docRef.id))
-                      .catch((err) => console.log(err))
-                  swal("Tu compra fue confirmada", {
-                    icon: "success",
-                  });
-              } else {
+                if(Logged){
+                    setHiddeButton(true);
+                    console.log(Buyer)
+                    PromiseHookOrder(Buyer.buyer.name, Buyer.buyer.phone, Buyer.buyer.email, Cart, finishtotal)
+                    handleClear();
+                    swal("Tu compra fue confirmada", {
+                        icon: "success",
+                    });
+                } else {
                 swal("Debes completar tus datos de comprador primero", {
                     icon: "warning",
-                  });
-              }
-            } else {
-              swal("Puedes continuar comprando");
+                });
             }
-          });
+            } else {
+                swal("Puedes continuar comprando");
+            }
+        })
     }
 
     return (
@@ -111,15 +106,17 @@ export const Cart = () => {
                     <h2>Tu compra fue confirmada</h2>
                 :
                     <div className="bodyButton">
-                        <Button variant="outlined" color="primary" onClick={handleClear}>
-                            Limpiar carrito
-                        </Button>
-                        <Button variant="outlined" color="secondary" onClick={handleTotalCalculate} >
-                            Calcular Total
-                        </Button>
-                        <Button variant="outlined" color="primary" onClick={handleFinish} >
-                            Terminar compra
-                        </Button>
+                        <form onSubmit={handleFinish}>
+                            <Button variant="outlined" color="primary" onClick={handleClear}>
+                                Limpiar carrito
+                            </Button>
+                            <Button variant="outlined" color="secondary" onClick={handleTotalCalculate} >
+                                Calcular Total
+                            </Button>
+                            <Button type="submit" variant="outlined" color="primary">
+                                Terminar compra
+                            </Button>
+                        </form>
                     </div>
                 }
                 {Ref && 
