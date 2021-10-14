@@ -70,7 +70,7 @@ export const PromiseHookId = (id) => {
     return({Items, Loading})
 }
 
-export const PromiseHookOrder = (name, phone, email, Cart) => {
+export const PromiseHookOrder = (name, phone, email, Cart, total) => {
     const db = getFirestore();
     console.log(name, phone, email, Cart)
     const ordersCollection = db.collection("orders");
@@ -82,7 +82,7 @@ export const PromiseHookOrder = (name, phone, email, Cart) => {
                 email,
             },
             items: Cart,
-            total: 2000
+            total: total
         })
         .then((docRef) => console.log(docRef.id))
         .catch((err) => {throw err})
