@@ -278,3 +278,35 @@ h2{
 .ModalLogIn{
   margin-top: 10rem;
 }
+
+.logginButton
+{
+  display: flex;
+  justify-content: space-around;
+  margin: 2rem 0;
+}
+#loginTittle{
+  text-align: center;
+  width: 100%;
+}
+.form-control{
+  margin: 1rem 0;
+}
+
+#logOut{
+  cursor: pointer;
+}
+.footerModal{
+  display: flex;
+  flex-direction: column;
+}
+.buttonLog{
+  width: 100%;
+}
+.googleLog{
+  background-color: rgb(157, 107, 15);
+}
+.googleLog:hover{
+  background-color: rgb(138, 95, 16);
+}
+

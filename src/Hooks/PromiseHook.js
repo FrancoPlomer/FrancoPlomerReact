@@ -1,5 +1,9 @@
 import { useEffect, useState } from 'react';
 import { getFirestore } from '../Firebase';
+import { getAuth, createUserWithEmailAndPassword, updateProfile,signInWithEmailAndPassword ,signInWithPopup, GoogleAuthProvider,  signOut  } from "firebase/auth";
+import "firebase/compat/auth"
+import swal from 'sweetalert';
+
 
 export const PromiseHookCategory = (categoria) => {
     const [Loading, setLoading] = useState(false);    
@@ -70,15 +74,14 @@ export const PromiseHookId = (id) => {
     return({Items, Loading})
 }
 
-export const PromiseHookOrder = (name, phone, email, Cart, total) => {
+export const PromiseHookOrder = (name, email, Cart, total) => {
     const db = getFirestore();
-    console.log(name, phone, email, Cart)
+    console.log(name, email, Cart)
     const ordersCollection = db.collection("orders");
     ordersCollection
         .add({
             buyer: {
                 name, 
-                phone,
                 email,
             },
             items: Cart,
@@ -86,4 +89,94 @@ export const PromiseHookOrder = (name, phone, email, Cart, total) => {
         })
         .then((docRef) => console.log(docRef.id))
         .catch((err) => {throw err})
+}
+
+export const Login = async (email, password) => 
+{
+    const auth =  getAuth();
+    await createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            swal("Su cuenta fue creada con exito", `` , "success");
+        })
+        .catch((err) => {
+            swal("", `${err.message}`, "warning");
+        })
+}
+
+
+export const signUp = async (email, password, setUser) => 
+{
+    const auth = getAuth();
+    signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+            const user = userCredential.user;
+            setUser(user.displayName)
+            swal("Bienvenido", `${user.displayName}` , "success");
+            return user.displayName;
+        })
+        .catch((error) => {
+            swal("", `${error.message}`, "warning");
+        });
+}
+
+export const updateUserName = async (userName, setUser) => 
+{
+    const auth = getAuth();
+    updateProfile(auth.currentUser, {
+        displayName: userName,
+    }).then(() => 
+    {
+        setUser(auth.currentUser.displayName)
+    }).catch((err) => 
+    {
+        console.log(err.message)
+    })
+}
+
+
+export const signUpWhitGoogle = async (setUser, setEmail) => 
+{
+    const auth = getAuth();
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(auth, provider)
+    .then((result) => {
+        const user = result.user;
+        setUser(user.displayName);
+        setEmail(user.email)
+        swal("Bienvenido", `${user.displayName}` , "success");
+        // ...
+    }).catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        const email = error.email;
+        const credential = GoogleAuthProvider.credentialFromError(error);
+        if(errorCode !== "")
+        {
+            swal("", `${errorCode}`, "warning");
+        }
+        else if (errorMessage !== "")
+        {
+            swal("", `${errorMessage}`, "warning");
+        }
+        else if (email !== "")
+        {
+            swal("", `${email}`, "warning");
+        }
+        else
+        {
+            swal("", `${credential}`, "warning");
+        }
+    });
+
+}
+
+export const updateLogOut = async (setUser) => 
+{
+    const auth = getAuth();
+    signOut(auth).then(() => {
+        setUser("")
+        swal("", "Deslogueado con exito", "success");
+    }).catch((error) => {
+        swal("", `${error.message}`, "warning");
+    });
 }

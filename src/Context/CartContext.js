@@ -12,15 +12,15 @@ export const CartProvider = memo(({ children }) =>
         buyer:
         {
             name: "", 
-            phone: 0, 
             email: "",
         }
     })
 
     const [BasePrice, setBasePrice] = useState(0)
+    const [User, setUser] = useState("")
 
 
-    const AddItem = (Item, quantity, price, source, id, precioBase) => {
+    const AddItem = (Item, quantity, price, id, precioBase) => {
         const NewItem = {
             id,
             Item, 
@@ -37,16 +37,14 @@ export const CartProvider = memo(({ children }) =>
         }
     }
 
-    const AddBuyer = (name, phone, email) => {
-        if(!Logged){
-            setBuyer({...Buyer,
-            buyer: {
-                name: name,
-                phone: phone,
-                email: email
-            }})
-            setLogged(true)
-        }
+    const AddBuyer = (User, Email) => {
+        setBuyer({...Buyer,
+        buyer: {
+            name: User,
+            email: Email,
+        }})
+        setLogged(true)
+    
     }
 
     const removeItem = (id) => 
@@ -76,7 +74,7 @@ export const CartProvider = memo(({ children }) =>
         setCart(newCart)
     }
 
-    return <CartContext.Provider value={{Cart, AddItem, removeItem, AddBuyer,  clear, isInCart, setBasePrice, BasePrice, Logged, Buyer}}>{ children }</CartContext.Provider>
+    return <CartContext.Provider value={{Cart, AddItem, removeItem, AddBuyer,  clear, isInCart, setBasePrice, BasePrice, Logged, Buyer, User, setUser, setLogged}}>{ children }</CartContext.Provider>
 });
 
 export const useCart = () => 

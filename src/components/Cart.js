@@ -51,8 +51,7 @@ export const Cart = () => {
             if (willFinish) {
                 if(Logged){
                     setHiddeButton(true);
-                    console.log(Buyer)
-                    PromiseHookOrder(Buyer.buyer.name, Buyer.buyer.phone, Buyer.buyer.email, Cart, finishtotal)
+                    PromiseHookOrder(Buyer.buyer.name, Buyer.buyer.email, Cart, finishtotal)
                     handleClear();
                     swal("Tu compra fue confirmada", {
                         icon: "success",

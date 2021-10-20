@@ -27,7 +27,7 @@ export const ItemCount = ( {Precio, stateCount, setStateCount, name, source, id}
     const onAdd = () =>
     {
         setRef (!Ref)
-        AddItem(name, stateCount, Price, source, id, BasePrice)
+        AddItem(name, stateCount, Price, id, BasePrice)
     }
 
     return (
