@@ -30,7 +30,7 @@ export const ItemDetailContainer = () => {
         <>
         {
             Items.map((item) => (
-                        <Card className="cardFatherDetail animate__animated animate__bounceIn">
+            <Card className="cardFatherDetail animate__animated animate__bounceIn">
                         <div className="cardFatherDetail__Container">
                             <CardActionArea>
                             <CardMedia
@@ -38,13 +38,8 @@ export const ItemDetailContainer = () => {
                                     image={require(`../../Assets/Multimedia/${item.nombre}.jpg`)?.default}
                                     title={item.nombre} />
                                 <CardContent>
-                                    <Typography gutterBottom variant="h5" component="h2">
+                                    <Typography gutterBottom variant="h5" component="h2" id="cardFatherDetail__Container-tittle">
                                         {item.nombre}
-                                    </Typography>
-                                </CardContent>
-                                <CardContent>
-                                    <Typography gutterBottom variant="h5" component="h2">
-                                        {item.tipo}
                                     </Typography>
                                 </CardContent>
                             </CardActionArea>

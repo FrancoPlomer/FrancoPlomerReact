@@ -38,23 +38,23 @@ export const ItemCount = ( {Precio, stateCount, setStateCount, name, source, id}
                 💲{`${Price}`},00ARS
             </strong>
             <div className="ContainerCount_HEAD">
-                <Button variant="contained" color="primary" onClick = {HandleDecrement}>
+                <Button variant="contained" color="secondary" onClick = {HandleDecrement}>
                     -
                 </Button>
                 <strong id="ContainerCount_HEAD--countValue">
                     {stateCount}
                 </strong>
-                <Button variant="contained" color="primary" onClick = {HandleIncrement}>
+                <Button variant="contained" color="secondary" onClick = {HandleIncrement}>
                     +
                 </Button>
                 </div>
             <div className="ContainerCount_Reset">
-                <Button variant="contained" color="primary"  onClick = {HandleReset}>
+                <Button variant="contained" color="secondary"  onClick = {HandleReset}>
                     Reset
                 </Button>
             </div>
             <div className="ContainerCount_Reset">
-                <Button variant="contained" color="primary" id="buyButton" onClick = {onAdd}>Agregar</Button>
+                <Button variant="contained" color="secondary" id="buyButton" onClick = {onAdd}>Agregar</Button>
             </div>
         </div> 
         : 
@@ -66,7 +66,7 @@ export const ItemCount = ( {Precio, stateCount, setStateCount, name, source, id}
                 💲{`${Price}`},00ARS
             </strong>
             <div className="ContainerCount_Reset">
-                <Button variant="contained" color="primary" id="buyButton">
+                <Button variant="contained" color="secondary" id="buyButton">
                     <Link to = "/Cart" className="itemMenu">Comprar</Link>
                 </Button>
             </div>

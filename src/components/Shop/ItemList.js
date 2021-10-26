@@ -29,14 +29,14 @@ export const CardList = ({id, name}) => {
                             </Typography>
                         </Link>
                             <CardContent>
-                                <Typography gutterBottom variant="h5" component="h2">
+                                <Typography gutterBottom variant="h5" component="h2" id="textCardImg_Content">
                                     {name}
                                 </Typography>
                             </CardContent>
                     </CardActionArea>
                     <CardActions className="product_Button">
                         <Button 
-                        variant="contained" color="primary" id="buyButton">
+                        variant="contained" color="secondary" id="buyButton">
                             <Link to={`/ItemDetailContainer/${id}`} id="linkDetail">
                                 Ver detalle
                             </Link>

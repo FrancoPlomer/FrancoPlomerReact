@@ -1,5 +1,6 @@
 import { createContext, memo, useContext, useState } from "react";
 import "firebase/compat/firestore"
+import swal from 'sweetalert';
 
 
 export const CartContext = createContext([])
@@ -33,7 +34,9 @@ export const CartProvider = memo(({ children }) =>
             setCart([...Cart, NewItem])
         }
         else{
-            alert("Ya existe este producto en el carrito")
+            swal("Ya existe este producto en el carrito", {
+                icon: "warning",
+            });
         }
     }
 

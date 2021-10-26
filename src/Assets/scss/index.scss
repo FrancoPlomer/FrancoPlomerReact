@@ -6,8 +6,9 @@
 }
 body
 {
-  background-color: #c4c4c4;
+  background-image: url("../Multimedia/fondo.jpg");
 }
+
 .cartItem{
   display: flex;
   width: 5rem;
@@ -15,7 +16,7 @@ body
 }
 #cartItem_Length{
   border-radius: 100%;
-  background-color: #677fcc;
+  background-color: #85878f;
   width: 2rem;
   display: flex;
   align-items: center;
@@ -24,14 +25,21 @@ body
 
 #tittleNavbar:hover
 {
-  border-bottom: 3px solid #1036d0;
-  border-top: 3px solid #1036d0;
+  border-bottom: 3px solid #c610d0;
+  border-top: 3px solid #c610d0;
   padding: 0;
 }
 #CarrouselHeader
 {
   height: 42rem;
   overflow: hidden;
+  .CarrouselHeader_imgContentCarrousel img{
+    object-fit: contain;
+    background-color: rgba(255, 255, 255, 0.933);
+  }
+  .CarrouselHeader_imgContentCarrousel-text h3,.CarrouselHeader_imgContentCarrousel-text p {
+    color: #000;
+  }
 }
 #CarrouselHeader img{
   height:45rem;
@@ -51,8 +59,36 @@ body
 {
   width: 100%;
 }
-h2{
-  color: #fff;
+.body{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.933);
+}
+#tittleBody{
+  color: #F1C0E8;
+  font-style:italic ;
+  text-shadow: 2px 2px 0 rgb(75, 75, 75);
+}
+#secondaryTittleBody{
+  color: rgb(126, 126, 126);
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  text-shadow: 2px 2px  #cecccc;
+}
+.body_MessageWelcome{
+  text-align: center;
+  margin-top: 3rem;
+  color: rgb(247, 247, 247);
+  background-color: #F1C0E8;
+  box-shadow: -5px 2px 0 rgba(0, 0, 0, 0.522);
+}
+.body_MessageWelcome-tittle{
+  font-style:italic;
+}
+#body_MessageWelcome-description{
+  font-size: 16pt;
+
 }
 .productosPanel
 {
@@ -73,56 +109,81 @@ h2{
   justify-content: center;
   align-items: flex-end;
 }
+.formCategory{
+  background-color:rgba(255, 255, 255, 0.933) ;
+  #demo-simple-select-label{
+    color:#000;
+    text-decoration: none;
+    text-align: center;
+    width: 100%;
+  }
+
+}
 .cardFather{
   max-width: 345px;
   margin-top: 2rem;
-  background-color: #060606;
-  background: -webkit-linear-gradient(top left, #929292, #c5c5c5);
+  background-color: rgba(255, 255, 255, 0.816);
   border-radius: 10%;
   border-right: 2px solid #000;
   border-bottom: 2px solid #000;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-}
-.cardFatherImg{
-  height: 370px;
-  width: 370px;
-  transition: all 0.5s;
-}
-.cardFatherImg:hover{
-  filter: blur(2px);
-}
-#textCardImg{
-  display: none;
-  width: 100%;
-  position: absolute;
-  margin-top: -15rem;
-  background-color: rgba(255, 255, 255, 0.816);
-  color:#000;
-  text-align: center;
-}
-.linkImgSrc:hover  .cardFatherImg{
-  filter: blur(2px);
-}
 
-.linkImgSrc:hover  #textCardImg{
-  display: block;
+  .cardFatherImg{
+    height: 370px;
+    width: 370px;
+    transition: all 0.5s;
+  }
+  .cardFatherImg:hover{
+    filter: blur(2px);
+  }
+  #textCardImg{
+    display: none;
+    width: 100%;
+    position: absolute;
+    margin-top: -15rem;
+    background-color: rgba(255, 255, 255, 0.816);
+    color:#000;
+    text-align: center;
+  }
+  #textCardImg_Content{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+    color: #b98eb1;
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.164);
+  }
+  .linkImgSrc:hover  .cardFatherImg{
+    filter: blur(2px);
+  }
+  
+  .linkImgSrc:hover  #textCardImg{
+    display: block;
+  }
 }
 .cardFatherDetail
 {
   width: 100%;
-  background-color: #060606;
-  background: -webkit-linear-gradient(top left, #929292, #c5c5c5);
+  background-color: rgba(255, 255, 255, 0.816);
   display: flex;
-  margin-top: 5rem;
+  margin-top: 5.5rem;
+  border-bottom: 4px solid rgba(0, 0, 0, 0.39);
+  border-top: 4px solid rgba(0, 0, 0, 0.39);
+
   .cardFatherDetail__Container
   {
     width: 70%;
+    border-right: 2px solid rgba(0, 0, 0, 0.473);
+
   }
   .cardFatherDetail__Description{
     width: 30%;
   }
+}
+#cardFatherDetail__Container-tittle{
+  text-align: center;
+  font-size: 20pt;
+  font-weight: 500;
 }
 .selectCategory
 {
@@ -162,8 +223,8 @@ h2{
 {
   display: flex;
   justify-content: space-between;
-  background-color: rgb(153, 172, 175);
-  border-bottom:3px solid #1036d0;
+  background-color: #fac0ed;
+  border-bottom:3px solid #cca2ce;
   height: 5rem;
   #logoNavBar{
     margin: 1rem auto;
@@ -174,9 +235,11 @@ h2{
     display: flex;
     #tittleNavbar
     {
-      font-family: 'Indie Flower', cursive;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
       text-shadow: 1px 1px #000;
       transition: all 1s;
+      z-index: 1;
+      margin-left: 4rem;
     }
   }
   .MenuBarLogged{
@@ -310,3 +373,6 @@ h2{
   background-color: rgb(138, 95, 16);
 }
 
+.cartContent{
+  background-color: rgba(255, 255, 255, 0.933);
+}

@@ -68,7 +68,7 @@ export const Cart = () => {
     }
 
     return (
-        <div>
+        <div className="cartContent">
             <div id="quantityProducts">
                 <h1>Cantidad de productos en el carrito: {Cart.length}</h1>
             </div>

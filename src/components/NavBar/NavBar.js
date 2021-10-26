@@ -19,7 +19,7 @@ export default function MenuAppBar() {
             </Link>
             <Link to="/" id="icon">
                 <div className="ContainerNavBar">
-                    <h1 id="tittleNavbar">Blanco ahorro</h1>
+                    <h1 id="tittleNavbar">Tienda</h1>
                 </div>
             </Link>
             <div className="MenuBarLogged">

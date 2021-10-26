@@ -21,7 +21,6 @@ function App() {
       </CartProvider>
       </BrowserRouter>
       </header>
-
     </div>
   );
 }
