@@ -1,5 +1,6 @@
 
-### `FIREBASE`
+### `E-COMMERCE-BLANCOAHORRO`
 
-Se incluye todos los productos y se incorporan los filtros por categoria utilizando las herramientas de firebase, dichos cambios se ven efectuados sobre el custom hook PromiseHook.js.
-Se incluyen las variables de entorno, la informacion asociada a la base podemos encontrarla dentro del directorio Firebase.
+Bienvenido a la plataforma e-commerce de blanco ahorro, la misma se desarrolla con la tecnologia de React.js en la cual tambien incluimos firebase en sus herramientas de firestore y firebase auth.
+Como librerias que forman parte del proyecto tenemos animate.css, material UI en su version 4 y React Bootstrap.
+
