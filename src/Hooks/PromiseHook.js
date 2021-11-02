@@ -76,7 +76,6 @@ export const PromiseHookId = (id) => {
 
 export const PromiseHookOrder = (name, email, Cart, total) => {
     const db = getFirestore();
-    console.log(name, email, Cart)
     const ordersCollection = db.collection("orders");
     ordersCollection
         .add({
@@ -87,7 +86,11 @@ export const PromiseHookOrder = (name, email, Cart, total) => {
             items: Cart,
             total: total
         })
-        .then((docRef) => console.log(docRef.id))
+        .then((docRef) =>{
+            swal(`Tu compra id:#${docRef.id} fue confirmada`, {
+                icon: "success",
+            });
+        })
         .catch((err) => {throw err})
 }
 

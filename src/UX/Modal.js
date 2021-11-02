@@ -19,7 +19,6 @@ export default function SimpleModal() {
     useEffect(() => {
         if (User !== "")
         {
-            console.log("Esto es el usuario ",User,"Esto es el email", Email)
             AddBuyer(User, Email);
         }
         else{

@@ -4,12 +4,14 @@ import Button from '@material-ui/core/Button';
 import swal from 'sweetalert';
 import "firebase/compat/firestore"
 import { PromiseHookOrder } from '../Hooks/PromiseHook';
+import SimpleModal from '../UX/Modal';
 
 export const Cart = () => {
     const {Cart, clear, removeItem, isInCart, Logged, Buyer} = useCart()
     const [Price, setPrice] = useState(0)
     const [Ref, setRef] = useState(false)   
     const [hiddeButton, setHiddeButton] = useState(false)
+    const [IsNotLog, setIsNotLog] = useState(false)
     let total = 0;
     const handleClear = () => {
         clear();
@@ -51,15 +53,14 @@ export const Cart = () => {
             if (willFinish) {
                 if(Logged){
                     setHiddeButton(true);
+                    setIsNotLog(false)
                     PromiseHookOrder(Buyer.buyer.name, Buyer.buyer.email, Cart, finishtotal)
                     handleClear();
-                    swal("Tu compra fue confirmada", {
-                        icon: "success",
-                    });
                 } else {
-                swal("Debes completar tus datos de comprador primero", {
-                    icon: "warning",
-                });
+                    setIsNotLog(true)
+                    swal("Debes completar tus datos de comprador primero, en el carrito se desplego una opcion para hacerlo", {
+                        icon: "warning",
+                    })
             }
             } else {
                 swal("Puedes continuar comprando");
@@ -123,6 +124,12 @@ export const Cart = () => {
                         <hr/>
                         <h3>Total: 💲{Price}</h3>
                     </div>
+                }
+                {(IsNotLog && !Logged) && 
+                <div className="IsnotLogged">
+                    <p>A continuacion puedes loguearte como comprador</p>
+                    <SimpleModal />
+                </div>
                 }
             </div>            
             }
